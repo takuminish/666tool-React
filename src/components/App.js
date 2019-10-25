@@ -1,19 +1,13 @@
 import React from 'react'
 import AkumaForm from './AkumaForm'
-import AkumaView from './AkumaView'
-import AkumaChart from './AkumaChart'
+import AkumaResult from './AkumaResult'
 
 class App extends React.Component {
     render() {
         return (
-            <div>
-                
+            <div>        
                 <AkumaForm handleClick={this.props.handleClick}/>
-
-                <AkumaView inputValue={this.props.input}/>
-
-                <AkumaChart />
-                
+                <AkumaResult inputValue={this.props.input}/>
             </div>
         );
     }
