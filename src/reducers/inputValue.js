@@ -1,7 +1,5 @@
-import { arrowFunctionExpression } from "@babel/types";
-
 const initialState = {
-    input: "hoge"
+    input: ""
 }
 
 const inputValue = (prevState = initialState, action) => {
