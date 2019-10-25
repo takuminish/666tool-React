@@ -7,14 +7,17 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <AkumaForm />
+                
+                <AkumaForm handleClick={this.props.handleClick}/>
 
-                <AkumaView />
+                <AkumaView inputValue={this.props.input}/>
 
                 <AkumaChart />
+                
             </div>
         );
     }
+
 }
 
 export default App;

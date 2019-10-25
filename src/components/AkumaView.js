@@ -3,7 +3,7 @@ import React from 'react'
 class AkumaView extends React.Component {
     render() {
         return(
-            <div>akumaview</div>
+            <div>{this.props.inputValue}</div>
         );
     }
 }

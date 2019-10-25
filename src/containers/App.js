@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import App from '../components/App'
 import inputValue from '../actions/inputValue'
+
 function mapStateToProps(state) {
     return state;
 }
