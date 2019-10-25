@@ -1,18 +1,18 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import App from '../components/App'
-import inputValue from '../actions/inputValue'
+import * as Actions from '../actions'
+import {bindActionCreators} from 'redux'
 
 function mapStateToProps(state) {
-    return state;
+    return {
+        input: state.inputValue.input,
+        inputResult: state.setValue.inputResult
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        handleClick(input) {
-            dispatch(inputValue(input));
-        },
-    };
+    return (bindActionCreators(Actions, dispatch));
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

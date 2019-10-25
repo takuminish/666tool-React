@@ -3,6 +3,7 @@ const initialState = {
 }
 
 const inputValue = (prevState = initialState, action) => {
+    console.log(action);
     switch(action.type) {
         case 'INPUT_VALUE':
             return {input: action.input}
