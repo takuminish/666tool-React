@@ -41,7 +41,6 @@ function akumaNumberCheck(number, resultTexts) {
             return true;
 
         default:
-            console.log("seikou");
             return false;
     }
 }
