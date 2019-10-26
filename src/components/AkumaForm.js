@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from 'react-bootstrap'
 
 class AkumaForm extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class AkumaForm extends React.Component {
                 <h1>数字の真実を…</h1>
                 <div>
                     <input type="text" value={this.props.input} onChange={this.handleChange}/>
-                    <button type="button" onClick={() => this.props.handleClick(this.props.input)}>解き明かす…</button>
+                    <Button variant="dark" onClick={() => this.props.handleClick(this.props.input)}>解き明かす…</Button>
                 </div>
             </div> 
         );

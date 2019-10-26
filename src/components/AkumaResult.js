@@ -5,12 +5,13 @@ import AkumaNotResult from './AkumaNotResult';
 
 class AkumaResult extends React.Component {
     render() {
-        {if (this.props.inputResult === '') return <div></div>}
-        {if (isNaN(this.props.inputResult)) return <AkumaNotResult />}
+        let akumaResultView;
+        if (this.props.inputResult === '') {akumaResultView = <div></div>}
+        this.props.inputResult > 0? akumaResultView = <AkumaView akumaNumberResult={this.props.akumaNumberResult} resultTexts={this.props.resultTexts}/> : akumaResultView =  <AkumaChart /> 
+        if (isNaN(this.props.inputResult)) {akumaResultView = <AkumaNotResult />}
+        
         return(
-            <div>
-                {this.props.inputResult > 0? <AkumaView akumaNumberResult={this.props.akumaNumberResult} resultTexts={this.props.resultTexts}/> : <AkumaChart /> }
-            </div>
+            <div> {akumaResultView}</div>
         );
     }
 }
