@@ -14,8 +14,8 @@ export const SET_VALUE='SET_VALUE';
 export function setValue(input) {
     let akumaNumberFlag;
     let resultTexts = [];
-    if(akumaNumberDecision(input, resultTexts)) {input = "fargareg";}
-    console.log(input);
+    if(akumaNumberDecision(parseInt(input), resultTexts)) {input = "fargareg";}
+    console.log(resultTexts);
     return {
         type: SET_VALUE,
         input: input

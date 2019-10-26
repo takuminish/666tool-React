@@ -1,29 +1,63 @@
-const AkumaNumber = 6;
+const akumaNumber = 6;
 const reverseAkumaNumber = 9;
-const KumaNumberTriple = 666;
+const akumaNumberTriple = 666;
 const reverseAkumaNUmberTriple = 999;
-const SpecialAkumaNUmber1 = 18;
-const SpecialAkumaNUmber2 = 27;
+const specialAkumaNUmber1 = 18;
+const specialAkumaNUmber2 = 27;
+const reverseAkumaNumberText = "9を反転させると6";
+const reverseAkumaNUmberTripleText = "999を反転させると666"
+const specialAkumaNUmber1Text = "18は6 + 6 + 6";
+const specialAkumaNUmber2Text = "27は9 + 9 + 9";
 
-export function akumaNumberDecision(inputValue, resultText) {
-  //  if(akumaNumberCheck(inputValue)) { return true;}
-    if(addOneDigit(inputValue, resultText)) {return true;}
+
+export function akumaNumberDecision(inputValue, resultTexts) {
+    if(akumaNumberCheck(inputValue, resultTexts)) {return true;}
+    if(addOneDigit(inputValue, resultTexts, 0)) {return true;}
   //  if(multOneDigit(inputValue, resultText)) {return true;}
 }
 
-function akumaNumberCheck(inputValue) {
-    return true;
+function akumaNumberCheck(number, resultTexts) {
+    switch(number) {
+        case akumaNumber:
+            return true;
+
+        case akumaNumberTriple:
+            return true;
+
+        case reverseAkumaNumber:
+            resultTexts.push(reverseAkumaNumberText);
+            return true;
+
+        case reverseAkumaNUmberTriple:
+            resultTexts.push(reverseAkumaNUmberTripleText);
+            return true;
+
+        case specialAkumaNUmber1:
+            resultTexts.push(specialAkumaNUmber1Text);
+            return true;
+
+        case specialAkumaNUmber2:
+            resultTexts.push(specialAkumaNUmber2Text);
+            return true;
+
+        default:
+            console.log("seikou");
+            return false;
+    }
 }
 
 function addOneDigit(inputValue, resultTexts, calculationCount) {
-    if ((parseInt(inputValue / 10) == 0) && (inputValue != AkumaNumber || inputValue != reverseAkumaNumber)) {
+    if ((parseInt(inputValue / 10) == 0) && (inputValue != akumaNumber || inputValue != reverseAkumaNumber)) {
         return false;
     }
     let calculationProcessNumber = numberSplitOneDigit(inputValue);
     let calculationResult = numberAddOneDigit(calculationProcessNumber);
     resultTexts[calculationCount] = calculationProcessTextCreate(calculationProcessNumber, calculationResult, "+");
+    
+    if(akumaNumberCheck(calculationResult, resultTexts)) { return true;}
 
     
+
     return true;
 }
 
