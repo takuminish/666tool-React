@@ -6,7 +6,7 @@ class AkumaNumberTripleImg extends React.Component {
         return(
             <div>
                 <h2>悪魔の数字　フリーメイソン!!</h2>
-                <img src={Img} />        
+                <img id="akumanumber-triple-img" src={Img} />        
             </div>
             );
     }

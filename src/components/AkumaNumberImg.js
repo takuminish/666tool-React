@@ -6,7 +6,7 @@ class AkumaNumberImg extends React.Component {
         return(
             <div>
                 <h2>悪魔の数字</h2>
-                <img src={Img} />        
+                <img id="akumanumber-img" src={Img} />        
             </div>
         );
     }
