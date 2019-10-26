@@ -7,7 +7,7 @@ class App extends React.Component {
         return (
             <div>        
                 <AkumaForm handleClick={this.props.setValue} handleChange={this.props.inputValue} input={this.props.input}/>
-                <AkumaResult inputResult={this.props.inputResult}/>
+                <AkumaResult inputResult={this.props.inputResult} akumaNumberResult={this.props.akumaNumberResult} resultTexts={this.props.resultTexts}/>
             </div>
         );
     }

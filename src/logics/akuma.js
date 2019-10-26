@@ -8,60 +8,87 @@ const reverseAkumaNumberText = "9を反転させると6";
 const reverseAkumaNUmberTripleText = "999を反転させると666"
 const specialAkumaNUmber1Text = "18は6 + 6 + 6";
 const specialAkumaNUmber2Text = "27は9 + 9 + 9";
-
+const addOperator = "+";
+const multOperator = "×";
 
 export function akumaNumberDecision(inputValue, resultTexts) {
-    if(akumaNumberCheck(inputValue, resultTexts)) {return true;}
-    if(addOneDigit(inputValue, resultTexts, 0)) {return true;}
-  //  if(multOneDigit(inputValue, resultText)) {return true;}
+    if (isNaN(inputValue)) {return false;}
+    let checkAkumaNumber = akumaNumberCheck(inputValue, resultTexts);
+    if(checkAkumaNumber !== false) {return checkAkumaNumber;}
+    checkAkumaNumber = calculationOneDigit(inputValue, resultTexts, 0, addOperator);
+    if(checkAkumaNumber !== false) { return checkAkumaNumber;}
+
+    checkAkumaNumber = calculationOneDigit(inputValue, resultTexts, 0, multOperator);
+    if(checkAkumaNumber !== false) { return checkAkumaNumber;}
+
+    return false;
 }
 
 function akumaNumberCheck(number, resultTexts) {
+    number = reverseAndSpecialAkumaNumberCheck(number, resultTexts);
+
     switch(number) {
         case akumaNumber:
-            return true;
+            return akumaNumber;
 
         case akumaNumberTriple:
-            return true;
-
-        case reverseAkumaNumber:
-            resultTexts.push(reverseAkumaNumberText);
-            return true;
-
-        case reverseAkumaNUmberTriple:
-            resultTexts.push(reverseAkumaNUmberTripleText);
-            return true;
-
-        case specialAkumaNUmber1:
-            resultTexts.push(specialAkumaNUmber1Text);
-            return true;
-
-        case specialAkumaNUmber2:
-            resultTexts.push(specialAkumaNUmber2Text);
-            return true;
+            return akumaNumberTriple;
 
         default:
             return false;
     }
 }
 
-function addOneDigit(inputValue, resultTexts, calculationCount) {
-    if ((parseInt(inputValue / 10) == 0) && (inputValue != akumaNumber || inputValue != reverseAkumaNumber)) {
-        return false;
+function reverseAndSpecialAkumaNumberCheck(number, resultTexts) {
+    switch(number) {
+        case reverseAkumaNumber:
+                resultTexts.push(reverseAkumaNumberText);
+                return akumaNumber;
+    
+            case reverseAkumaNUmberTriple:
+                resultTexts.push(reverseAkumaNUmberTripleText);
+                return akumaNumberTriple;
+    
+            case specialAkumaNUmber1:
+                resultTexts.push(specialAkumaNUmber1Text);
+                return akumaNumberTriple;
+    
+            case specialAkumaNUmber2:
+                resultTexts.push(specialAkumaNUmber2Text);
+                return akumaNumberTriple;
+    
+            default:
+                return number;
     }
-    let calculationProcessNumber = numberSplitOneDigit(inputValue);
-    let calculationResult = numberAddOneDigit(calculationProcessNumber);
-    resultTexts[calculationCount] = calculationProcessTextCreate(calculationProcessNumber, calculationResult, "+");
-    
-    if(akumaNumberCheck(calculationResult, resultTexts)) { return true;}
-
-    
-
-    return true;
 }
 
-function multOneDigit(inputValue, resultText) {
-    return true;
+function calculationOneDigit(inputValue, resultTexts, calculationCount, operator) {
+    let checkAkumaNumber = akumaNumberCheck(inputValue, resultTexts);
+    if(checkAkumaNumber !== false) { return checkAkumaNumber;}
+
+    if (inputValue <= 10) { return false; }
+
+    let calculationProcessNumber = numberSplitOneDigit(inputValue);
+    let calculationResult = 0;
+    switch(operator) {
+        case addOperator:
+            calculationResult = numberAddOneDigit(calculationProcessNumber);
+            break;
+        case multOperator:
+            calculationResult = numberMultOneDigit(calculationProcessNumber);
+            break;
+    }
+
+    resultTexts[calculationCount] = calculationProcessTextCreate(calculationProcessNumber, calculationResult, operator);
+
+    checkAkumaNumber = calculationOneDigit(calculationResult, resultTexts, calculationCount+1, addOperator);
+    if(checkAkumaNumber !== false) { return checkAkumaNumber;}
+
+    checkAkumaNumber = calculationOneDigit(calculationResult, resultTexts, calculationCount+1, multOperator);
+    if(checkAkumaNumber !== false) { return checkAkumaNumber;}
+    
+    resultTexts.splice(calculationCount,1);
+    return false;
 }
 
 function numberSplitOneDigit(inputValue) {
