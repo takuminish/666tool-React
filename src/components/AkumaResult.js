@@ -6,7 +6,7 @@ import { thisExpression } from '@babel/types';
 
 class AkumaResult extends React.Component {
 
-    construcor(props) {
+    constructor(props) {
         super(props);
         let {inputResult} = this.props;
         this.inputResult = inputResult;
