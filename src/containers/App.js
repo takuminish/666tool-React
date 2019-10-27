@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux'
 
 function mapStateToProps(state) {
     return {
-        input: state.inputValue.input,
         inputResult: state.setValue.input,
         resultTexts: state.setValue.resultTexts,
         akumaNumberResult: state.setValue.akumaNumberResult

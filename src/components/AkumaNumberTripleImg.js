@@ -1,4 +1,5 @@
 import React from 'react'
+import {pure} from 'recompose'
 import Img from '../images/666_mozaiku.jpg'
 import ResultImg from './styledcomponents/ResultImg'
 import AkumaText from './styledcomponents/AkumaText'
@@ -11,4 +12,7 @@ const AkumaNumberTripleImg = (props => {
         </div>
     );
 });
-export default AkumaNumberTripleImg;
+
+const PureAkumaNumberTripleImg = pure(AkumaNumberTripleImg);
+
+export default PureAkumaNumberTripleImg;

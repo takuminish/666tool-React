@@ -1,3 +1,4 @@
+import {pure} from 'recompose'
 import React from 'react'
 import AkumaText from './styledcomponents/AkumaText'
 
@@ -10,4 +11,6 @@ const CalculateView = (props => {
     );
 });
 
-export default CalculateView;
+const PureCalculateView = pure(CalculateView);
+
+export default PureCalculateView;
