@@ -1,11 +1,12 @@
 import React from 'react'
+import AkumaText from './styledcomponents/AkumaText'
 
 class CalculateView extends React.Component {
     render() {
         return (
             <div>
-              <h2>{this.props.resultText}</h2>
-              <h2>↓</h2>
+              <AkumaText>{this.props.resultText}</AkumaText>
+              <AkumaText>↓</AkumaText>
             </div>
         );
     }

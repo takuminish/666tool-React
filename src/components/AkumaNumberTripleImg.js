@@ -1,12 +1,14 @@
 import React from 'react'
 import Img from '../images/666_mozaiku.jpg'
+import ResultImg from './styledcomponents/ResultImg'
+import AkumaText from './styledcomponents/AkumaText'
 
 class AkumaNumberTripleImg extends React.Component {
     render() {
         return(
             <div>
-                <h2>悪魔の数字　フリーメイソン!!</h2>
-                <img id="akumanumber-triple-img" src={Img} />        
+                <AkumaText>悪魔の数字　フリーメイソン!!</AkumaText>
+                <ResultImg src={Img} />        
             </div>
             );
     }
