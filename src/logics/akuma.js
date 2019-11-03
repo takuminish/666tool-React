@@ -11,6 +11,40 @@ const specialAkumaNUmber2Text = "27は9 + 9 + 9";
 const addOperator = "+";
 const multOperator = "×";
 
+/* 0からinputVlueまでの間で悪魔の数字に変換できる数の個数の頻度を数える
+　 横軸はinputValue / 10の値とする
+
+   return なし
+   params inputValue Formで入力した値
+   params akumaNukberFrequency 悪魔の数字の頻度を格納する連想配列
+*/
+export function akumanumberFrequency(inputValue, akumaNukberFrequency) {
+
+    let dx = parseInt(inputValue / 10);  // 入力した数値の1/10を折れ線グラフの横軸の単位とする
+    let arrayPosition = 0;  
+
+    for (let i = 0; i < inputValue; i++) {
+
+        // 悪魔の数字の推移を求める必要があるため、一つ前の頻度の値を初期値とする
+        if(i >= dx * arrayPosition) {
+            let beforAkumaNumberCount = akumaNukberFrequency[arrayPosition]['akumaNumberCount'];
+            let beforAkumaNumberTripleCount = akumaNukberFrequency[arrayPosition]['akumaNumberTripleCount'];
+            arrayPosition++;
+            akumaNukberFrequency.push({akumaNumberCount: beforAkumaNumberCount, akumaNumberTripleCount: beforAkumaNumberTripleCount, dx: dx * arrayPosition});
+        }
+        
+        switch(akumaNumberDecision(i, [])) {
+            case akumaNumber:
+                akumaNukberFrequency[arrayPosition]['akumaNumberCount']++;
+                break;
+            case akumaNumberTriple:
+                akumaNukberFrequency[arrayPosition]['akumaNumberTripleCount']++;
+                break;
+            default:
+        }
+    }
+}
+
 export function akumaNumberDecision(inputValue, resultTexts) {
     if (isNaN(inputValue)) {return false;}
     let checkAkumaNumber = akumaNumberCheck(inputValue, resultTexts);
