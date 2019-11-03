@@ -6,8 +6,13 @@ import AkumaNotResult from './AkumaNotResult';
 class AkumaResult extends React.Component {
     render() {
         let akumaResultView;
-        if (this.props.inputResult === '') {akumaResultView = <div></div>}
-        this.props.inputResult > 0? akumaResultView = <AkumaView akumaNumberResult={this.props.akumaNumberResult} resultTexts={this.props.resultTexts}/> : akumaResultView =  <AkumaChart /> 
+        
+        if (this.props.inputResult > 0) {
+            akumaResultView = <AkumaView akumaNumberResult={this.props.akumaNumberResult} resultTexts={this.props.resultTexts}/>
+        } else {
+            akumaResultView =  <AkumaChart />
+        }
+
         if (isNaN(this.props.inputResult)) {akumaResultView = <AkumaNotResult />}
         
         return(
