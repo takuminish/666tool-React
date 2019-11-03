@@ -7,7 +7,9 @@ class AkumaResult extends React.Component {
     render() {
         let akumaResultView;
         
-        if (this.props.inputResult > 0) {
+        if (this.props.inputResult === '') {return <div> </div>}
+
+        if (this.props.inputResult >= 0) {
             akumaResultView = <AkumaView akumaNumberResult={this.props.akumaNumberResult} resultTexts={this.props.resultTexts}/>
         } else {
             akumaResultView =  <AkumaChart />
