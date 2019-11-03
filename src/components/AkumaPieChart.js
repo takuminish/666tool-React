@@ -7,13 +7,17 @@ class AkumaPieChart extends React.Component {
           labels: ['6', '666', 'other'],
           datasets: [
             {
-              data: [10,10,10],
+              data: [
+                  this.props.akumaNumberCount['akumaNumberCount'], 
+                  this.props.akumaNumberCount['akumaNumberTripleCount'], 
+                  this.props.akumaNumberCount['otherCount']
+                ],
               backgroundColor: [
                   '#9400d3',  // darkViolet
                   '#ffff00',  // yellow
                   '#808080'   //gray
               ,]
-              // 省略
+
             },
           ],
         };

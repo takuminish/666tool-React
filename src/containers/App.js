@@ -7,7 +7,8 @@ function mapStateToProps(state) {
     return {
         inputResult: state.setValue.input,
         resultTexts: state.setValue.resultTexts,
-        akumaNumberResult: state.setValue.akumaNumberResult
+        akumaNumberResult: state.setValue.akumaNumberResult,
+        akumaNumberFrequency: state.setValue.akumaNumberFrequency
     };
 }
 

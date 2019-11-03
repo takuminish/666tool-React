@@ -14,7 +14,16 @@ const multOperator = "×";
 /* 0からinputVlueまでの間で悪魔の数字に変換できる数の個数の頻度を数える
 　 横軸はinputValue / 10の値とする
 
-   return なし
+   return akumaNumberFrequency 悪魔の数字の出現頻度の連想配列のarray
+          [
+              { 
+                  akumaNumberCount: 6の出現頻度,
+                  akumaNumberTripleCount: 666の出現頻度,
+                  otherCount: 悪魔の数字以外の出現頻度,
+                  dx: グラフの横軸の値
+              },
+              ...
+          ]
    params inputValue Formで入力した値
    params akumaNukberFrequency 悪魔の数字の頻度を格納する連想配列
 */
@@ -29,10 +38,16 @@ export function akumanumberFrequency(inputValue, akumaNukberFrequency) {
         if(i >= dx * arrayPosition) {
             let beforAkumaNumberCount = akumaNukberFrequency[arrayPosition]['akumaNumberCount'];
             let beforAkumaNumberTripleCount = akumaNukberFrequency[arrayPosition]['akumaNumberTripleCount'];
+            let beforOtherCount = akumaNukberFrequency[arrayPosition]['otherCount'];
             arrayPosition++;
-            akumaNukberFrequency.push({akumaNumberCount: beforAkumaNumberCount, akumaNumberTripleCount: beforAkumaNumberTripleCount, dx: dx * arrayPosition});
+            akumaNukberFrequency.push({
+                akumaNumberCount: beforAkumaNumberCount,
+                akumaNumberTripleCount: beforAkumaNumberTripleCount,
+                otherCount: beforOtherCount,
+                dx: dx * arrayPosition
+            });
         }
-        
+
         switch(akumaNumberDecision(i, [])) {
             case akumaNumber:
                 akumaNukberFrequency[arrayPosition]['akumaNumberCount']++;
@@ -41,14 +56,34 @@ export function akumanumberFrequency(inputValue, akumaNukberFrequency) {
                 akumaNukberFrequency[arrayPosition]['akumaNumberTripleCount']++;
                 break;
             default:
+                    akumaNukberFrequency[arrayPosition]['otherCount']++;
         }
     }
+
+    return akumaNukberFrequency;
 }
 
+/* 入力値を悪魔の数字に変換する。引数のresultTextsには悪魔の数字への変換過程を格納する。
+    return 6に変換できた場合 6
+           666に変換できた場合 666
+           変換できなかった場合 false
+    params inputValue Formで入力した値
+    params resultTexts　画面に表示する文字の配列 初期値 []　  
+
+    実行例 inputValue = 12345の時
+          returnする値 6
+          resultTexts = [
+              1+2+3+4+5=15,
+              1+5=6
+          ]
+    となる
+*/
 export function akumaNumberDecision(inputValue, resultTexts) {
     if (isNaN(inputValue)) {return false;}
+
     let checkAkumaNumber = akumaNumberCheck(inputValue, resultTexts);
     if(checkAkumaNumber !== false) {return checkAkumaNumber;}
+    
     checkAkumaNumber = calculationOneDigit(inputValue, resultTexts, 0, addOperator);
     if(checkAkumaNumber !== false) { return checkAkumaNumber;}
 

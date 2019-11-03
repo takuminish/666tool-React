@@ -12,7 +12,7 @@ class AkumaResult extends React.Component {
         if (this.props.inputResult >= 0) {
             akumaResultView = <AkumaView akumaNumberResult={this.props.akumaNumberResult} resultTexts={this.props.resultTexts}/>
         } else {
-            akumaResultView =  <AkumaChart />
+            akumaResultView =  <AkumaChart akumaNumberFrequency={this.props.akumaNumberFrequency}/>
         }
 
         if (isNaN(this.props.inputResult)) {akumaResultView = <AkumaNotResult />}

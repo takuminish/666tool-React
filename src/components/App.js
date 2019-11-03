@@ -9,7 +9,7 @@ const App = (props => {
         <AKumaComponent>   
             <AkumaHeader>数字の真実を…</AkumaHeader>     
             <AkumaForm handleClick={props.setValue} handleChange={props.inputValue} input={props.input}/>
-            <AkumaResult inputResult={props.inputResult} akumaNumberResult={props.akumaNumberResult} resultTexts={props.resultTexts}/>
+            <AkumaResult inputResult={props.inputResult} akumaNumberResult={props.akumaNumberResult} resultTexts={props.resultTexts} akumaNumberFrequency={props.akumaNumberFrequency}/>
         </AKumaComponent>
     );
 });
