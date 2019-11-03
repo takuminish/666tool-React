@@ -26,10 +26,14 @@ class AkumaPieChart extends React.Component {
                 labels: {
                     fontColor: "white"
                 }
-            }
+            },
+            maintainAspectRatio: true,
+            responsive: true
         };
         return (
-          <Pie data={data} options={options} />
+            <div style={{width: '75%', margin: 'auto'}}>
+                <Pie data={data} options={options}/>
+            </div>
         );
       
     }

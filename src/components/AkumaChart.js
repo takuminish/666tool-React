@@ -13,7 +13,7 @@ class AkumaChart extends React.Component {
             this.akumaNumberFrequency['other'].push(frequency['otherCount']);
             this.akumaNumberFrequency['dx'].push(frequency['dx']); 
         });
-        
+
         return(
             <div>
                 <AkumaPieChart akumaNumberCount={this.lastAkumaNumberFrequency} />

@@ -50,10 +50,14 @@ class AkumaLineChart extends React.Component {
                 labels: {
                     fontColor: 'white'
                 }
-            }
+            },
+            maintainAspectRatio: true,
+            responsive: true
         };
         return (
-          <Line data={data} options={options} />
+            <div style={{width: '75%', margin: 'auto'}}>
+                <Line data={data} options={options}/>
+            </div>
         );
       
     }
