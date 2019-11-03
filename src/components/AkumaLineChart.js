@@ -7,15 +7,15 @@ class AkumaLineChart extends React.Component {
             labels: this.props.akumaNumberFrequency['dx'],
             datasets: [{
                 label: '6',
-                borderColor: '#ffff00',      // yellow
-                fill: false,
-                backgroundColor: '#ffff00',  // yellow
-                data: this.props.akumaNumberFrequency['akumaNumber']
-            }, {
-                label: '666',
                 borderColor: '#9400d3',      // darkViolet
                 fill: false,
                 backgroundColor: '#9400d3',  // darkViolet
+                data: this.props.akumaNumberFrequency['akumaNumber']
+            }, {
+                label: '666',
+                borderColor: '#ffff00',      // yellow
+                fill: false,
+                backgroundColor: '#ffff00',  // yellow
                 data: this.props.akumaNumberFrequency['akumaNumberTriple']
             },
             {
